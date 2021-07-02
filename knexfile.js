@@ -28,18 +28,12 @@ module.exports = {
   },
 
   production: {
-    client: "postgresql",
+    client: "mysql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
+      host: "us-cdbr-east-04.cleardb.com",
+      user: "b9153e750de540",
+      password: "d7d54bef",
+      database: "heroku_bc550324a73e194",
     },
   },
 };
