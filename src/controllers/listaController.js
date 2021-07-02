@@ -51,6 +51,7 @@ module.exports = {
 
   async delete(req, resp) {
     const { id } = req.params;
+    
     try {
       await connectionDB("listas").delete().where("id", id);
     } catch (erro) {
@@ -58,7 +59,17 @@ module.exports = {
         mensagem: "Erro ao deletar lista",
         erro,
       });
-    }
+    };
+    
+    try{
+      await connectionDB("cards").delete().where("listas_id", id);
+    } catch (erro) {
+      return resp.status(400).send({
+        mensagem: "Erro ao deletar cards da lista",
+        erro,
+      });
+    };
+    
     return resp.status(200).send();
   },
 };
